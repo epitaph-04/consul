@@ -6,10 +6,6 @@ description: |-
    The /namespace endpoints allow for managing Consul Enterprise Namespaces.
 ---
 
-	registerEndpoint("/v1/namespace", []string{"PUT"}, (*HTTPServer).NamespaceCreate)
-	registerEndpoint("/v1/namespaces", []string{"GET"}, (*HTTPServer).NamespaceList)
-	registerEndpoint("/v1/namespace/", []string{"GET", "PUT", "DELETE"}, (*HTTPServer).NamespaceCRUD)
-
 # Namespace - HTTP API
 
 ~> **Enterprise Only!** This API endpoint and functionality only exists in
