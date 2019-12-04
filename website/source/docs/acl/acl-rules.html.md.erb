@@ -567,7 +567,7 @@ and deny all access to any sessions on the "admin" node.
 <%= enterprise_alert :consul %>
 
 [Consul Enterprise](https://www.hashicorp.com/consul.html) 1.7.0 adds support for namespacing of many 
-Consul resources. Rules can then be defined to only to apply to apply to specific namespaces.
+Consul resources. ACL rules themselves can then be defined within a namespace and will only be applicable within that namespace.
 
 A Namespace specific rule would look like this:
 
