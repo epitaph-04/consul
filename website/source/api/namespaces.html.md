@@ -8,7 +8,7 @@ description: |-
 
 # Namespace - HTTP API
 
-~> **Enterprise Only!** This API endpoint and functionality only exists in
+~> **Enterprise Only!** These API endpoints and functionality only exists in
 Consul Enterprise. This is not present in the open source version of Consul.
 
 The functionality described here is available only in

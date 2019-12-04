@@ -80,7 +80,7 @@ Meta {
 
 ### Fields
 
--`Name` `(string: <required>)` - The Namespaces name must be a valid DNS hostname label.
+- `Name` `(string: <required>)` - The Namespaces name must be a valid DNS hostname label.
 
 - `Description` `(string: "")` - This field is intended to be a human readable description of the
   namespace's purpose. It is not used internally.

@@ -73,7 +73,7 @@ An ACL policy is a named set of rules and is composed of the following elements:
 and will be assigned the reserved ID of `00000000-0000-0000-0000-000000000001`. This policy can be renamed but modification
 of anything else including the rule set and datacenter scoping will be prevented by Consul.
 
-* **Namespace Management** - **Enterprise Only** - Every Namespace created will have a policy injected with the name `namespace-management`. This policy gets injected with a randomized UUID and maybe be managed like any other user-defined policy
+* **Namespace Management** - **Enterprise Only** - Every Namespace created will have a policy injected with the name `namespace-management`. This policy gets injected with a randomized UUID and may be managed like any other user-defined policy
 within the Namespace. (Added in Consul Enterprise 1.7.0)
 
 ### ACL Service Identities
