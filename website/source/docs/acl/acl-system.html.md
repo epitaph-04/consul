@@ -65,7 +65,7 @@ An ACL policy is a named set of rules and is composed of the following elements:
 * **Datacenters** - A list of datacenters the policy is valid within.
 * **Namespace** - **Enterprise Only** - The namespace this policy resides within. (Added in Consul Enterprise 1.7.0)
 
--> **Consul Enterprise Namespacing** - Rules defined in a policy in any namespace other than `default` will be [restricted](/docs/acl/acl-rules.html#namespacing) to being able to grant a subset of the overall permissions and only affecting that single namespace. 
+-> **Consul Enterprise Namespacing** - Rules defined in a policy in any namespace other than `default` will be [restricted](/docs/acl/acl-rules.html#namespace-rules-enterprise) to being able to grant a subset of the overall permissions and only affecting that single namespace. 
 
 #### Builtin Policies
 

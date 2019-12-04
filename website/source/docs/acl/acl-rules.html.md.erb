@@ -621,7 +621,7 @@ targets a non-`default` namespace.
 In general all of the above are permissions that only an operator should have and thus granting these permissions can
 only be targeted at the default namespace.
 
--> **Implicit Namespacing:** Rules defined in a policy which itself resides in a namespace other than `default`, will 
+-> **Implicit namespacing:** Rules defined in a policy which itself resides in a namespace other than `default`, will 
 be implicitly namespaced. Therefore the restrictions defined here will apply to all rules within the policy including
 those which are not enclosed in a `namespace` rule. Additionally, these policies will be prevented from defining rules
 that would target any other namespace explicitly.
