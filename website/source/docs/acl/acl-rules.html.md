@@ -561,3 +561,69 @@ session "admin" {
 Session rules are segmented by the node name they apply to. In the example above, the rules allow read-only
 access to sessions on node name with the empty prefix, allow creating sessions on the node named "app",
 and deny all access to any sessions on the "admin" node.
+
+#### Namespacing
+
+<%= enterprise_alert :consul %>
+
+[Consul Enterprise](https://www.hashicorp.com/consul.html) 1.7.0 adds support for Namespacing of many 
+Consul resources. Rules can then be defined to only to apply to apply to specific namespaces.
+
+A Namespace specific rule would look like this:
+
+```hcl
+namespace_prefix "" {
+  
+  # grant service:read for all services in all namespaces
+  service_prefix "" {
+    policy = "read"
+  }
+  
+  # grant node:read for all nodes in all namespaces
+  node_prefix "" {
+    policy = "read"
+  }
+}
+
+namespace "foo" {
+  # grants permission to manage ACLs only for the foo namespace
+  acl = "write"
+  
+  # grants write permissions to the KV for namespace foo
+  key_prefix "" {
+    policy = "write"
+  }
+  
+  # grants write permissions for sessions for namespace foo
+  session_prefix "" {
+    policy = "write"
+  }
+  
+  # grants service:write for all services in the foo namespace
+  service_prefix "" {
+    policy = "write"
+  }
+  
+  # grants node:read for all nodes
+  node_prefix "" {
+    policy = "read"
+  }
+}
+```
+
+There are some restrictions to the rules that can be contained within a `namespace` or `namespace_prefix` rule that
+targets a non-`default` namespace.
+
+1. `operator` rules are not allowed.
+2. `event` rules are not allowed.
+3. `keyring` rules are not allowed.
+4. `query` rules are not allowed.
+5. `node` rules that attempt to grant `write` privileges are not allowed.
+
+In general all of the above are permissions that only an operator should have and thus granting these permissions can
+only be targeted at the default namespace.
+
+-> **Implicit Namespacing:** Rules defined in a policy which itself resides in a namespace other than `default`, will 
+be implicitly namespaced. Therefore the restrictions defined here will apply to all rules within the policy including
+those which are not enclosed in a `namespace` rule. Additionally, these policies will be prevented from defining rules
+that would target any other namespace explicitly.
