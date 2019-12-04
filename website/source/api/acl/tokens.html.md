@@ -94,7 +94,7 @@ The table below shows this endpoint's support for
   create the token within. If not provided in the JSON body, the value of
   the `ns` URL query parameter or the `X-Consul-Namespace` header will be used. 
   If not provided at all, the namespace will be inherited from the request's ACL 
-  token, or will default to the `default` namespace. Added in Consul 1.7.0.
+  token or will default to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Payload
 
@@ -173,7 +173,7 @@ The table below shows this endpoint's support for
 - `ns` `(string: "")` - **Enterprise Only** Specifies the namespace to lookup
   the token within. This value can be specified as the `ns` URL query 
   parameter, or the `X-Consul-Namespace` header. If not provided by either,
-  the namespace will be inherited from the request's ACL token, or will default
+  the namespace will be inherited from the request's ACL token or will default
   to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Request
@@ -345,7 +345,7 @@ The table below shows this endpoint's support for
   the token to update. If not provided in the JSON body, the value of
   the `ns` URL query parameter or the `X-Consul-Namespace` header will be used. 
   If not provided at all, the namespace will be inherited from the request's ACL 
-  token, or will default to the `default` namespace. Added in Consul 1.7.0.
+  token or will default to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Payload
 
@@ -433,7 +433,7 @@ The table below shows this endpoint's support for
   the token to be cloned. If not provided in the JSON body, the value of
   the `ns` URL query parameter or the `X-Consul-Namespace` header will be used. 
   If not provided at all, the namespace will be inherited from the request's ACL 
-  token, or will default to the `default` namespace. Added in Consul 1.7.0.
+  token or will default to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Payload
 
@@ -509,7 +509,7 @@ The table below shows this endpoint's support for
 - `ns` `(string: "")` - **Enterprise Only** Specifies the namespace of the
   token to delete. This value can be specified as the `ns` URL query 
   parameter, or the `X-Consul-Namespace` header. If not provided by either,
-  the namespace will be inherited from the request's ACL token, or will default
+  the namespace will be inherited from the request's ACL token or will default
   to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Request
@@ -556,7 +556,7 @@ The table below shows this endpoint's support for
 - `ns` `(string: "")` - **Enterprise Only** Specifies the namespace to list
   the tokens for. This value can be specified as the `ns` URL query 
   parameter, or the `X-Consul-Namespace` header. If not provided by either,
-  the namespace will be inherited from the request's ACL token, or will default
+  the namespace will be inherited from the request's ACL token or will default
   to the `default` namespace. The namespace may be specified as '*' and then
   results will be returned for all namespaces. Added in Consul 1.7.0.
 
