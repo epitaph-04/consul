@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/consul/agent/structs"
+	"github.com/hashicorp/consul/lib"
 	"github.com/hashicorp/consul/types"
 )
 
@@ -37,7 +38,7 @@ func (s *HTTPServer) SessionCreate(resp http.ResponseWriter, req *http.Request) 
 
 	// Handle optional request body
 	if req.ContentLength > 0 {
-		if err := decodeBodyStrict(req.Body, &args.Session); err != nil {
+		if err := lib.DecodeJSON(req.Body, &args.Session); err != nil {
 			err := s.handleUnknownEnterpriseFields(err)
 			resp.WriteHeader(http.StatusBadRequest)
 			fmt.Fprintf(resp, "Request decode failed: %v", err)

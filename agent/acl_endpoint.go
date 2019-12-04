@@ -9,6 +9,7 @@ import (
 
 	"github.com/hashicorp/consul/acl"
 	"github.com/hashicorp/consul/agent/structs"
+	"github.com/hashicorp/consul/lib"
 )
 
 // aclCreateResponse is used to wrap the ACL ID
@@ -289,7 +290,7 @@ func (s *HTTPServer) aclPolicyWriteInternal(resp http.ResponseWriter, req *http.
 		return nil, err
 	}
 
-	if err := decodeBodyStrict(req.Body, &args.Policy); err != nil {
+	if err := lib.DecodeJSON(req.Body, &args.Policy); err != nil {
 		err := s.handleUnknownEnterpriseFields(err)
 		return nil, BadRequestError{Reason: fmt.Sprintf("Policy decoding failed: %v", err)}
 	}
@@ -488,7 +489,7 @@ func (s *HTTPServer) aclTokenSetInternal(resp http.ResponseWriter, req *http.Req
 		return nil, err
 	}
 
-	if err := decodeBodyStrict(req.Body, &args.ACLToken); err != nil {
+	if err := lib.DecodeJSON(req.Body, &args.ACLToken); err != nil {
 		err := s.handleUnknownEnterpriseFields(err)
 		return nil, BadRequestError{Reason: fmt.Sprintf("Token decoding failed: %v", err)}
 	}
@@ -539,7 +540,7 @@ func (s *HTTPServer) ACLTokenClone(resp http.ResponseWriter, req *http.Request, 
 	if err := s.parseEntMeta(req, &args.ACLToken.EnterpriseMeta); err != nil {
 		return nil, err
 	}
-	if err := decodeBodyStrict(req.Body, &args.ACLToken); err != nil {
+	if err := lib.DecodeJSON(req.Body, &args.ACLToken); err != nil {
 		err := s.handleUnknownEnterpriseFields(err)
 		return nil, BadRequestError{Reason: fmt.Sprintf("Token decoding failed: %v", err)}
 	}
@@ -683,7 +684,7 @@ func (s *HTTPServer) ACLRoleWrite(resp http.ResponseWriter, req *http.Request, r
 		return nil, err
 	}
 
-	if err := decodeBodyStrict(req.Body, &args.Role); err != nil {
+	if err := lib.DecodeJSON(req.Body, &args.Role); err != nil {
 		err := s.handleUnknownEnterpriseFields(err)
 		return nil, BadRequestError{Reason: fmt.Sprintf("Role decoding failed: %v", err)}
 	}
@@ -831,7 +832,7 @@ func (s *HTTPServer) ACLBindingRuleWrite(resp http.ResponseWriter, req *http.Req
 		return nil, err
 	}
 
-	if err := decodeBodyStrict(req.Body, &args.BindingRule); err != nil {
+	if err := lib.DecodeJSON(req.Body, &args.BindingRule); err != nil {
 		err := s.handleUnknownEnterpriseFields(err)
 		return nil, BadRequestError{Reason: fmt.Sprintf("BindingRule decoding failed: %v", err)}
 	}
@@ -976,7 +977,7 @@ func (s *HTTPServer) ACLAuthMethodWrite(resp http.ResponseWriter, req *http.Requ
 		return nil, err
 	}
 
-	if err := decodeBodyStrict(req.Body, &args.AuthMethod); err != nil {
+	if err := lib.DecodeJSON(req.Body, &args.AuthMethod); err != nil {
 		err := s.handleUnknownEnterpriseFields(err)
 		return nil, BadRequestError{Reason: fmt.Sprintf("AuthMethod decoding failed: %v", err)}
 	}
@@ -1030,7 +1031,7 @@ func (s *HTTPServer) ACLLogin(resp http.ResponseWriter, req *http.Request) (inte
 		return nil, err
 	}
 
-	if err := decodeBodyStrict(req.Body, &args.Auth); err != nil {
+	if err := lib.DecodeJSON(req.Body, &args.Auth); err != nil {
 		err := s.handleUnknownEnterpriseFields(err)
 		return nil, BadRequestError{Reason: fmt.Sprintf("Failed to decode request body:: %v", err)}
 	}

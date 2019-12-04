@@ -1,9 +1,7 @@
 package structs
 
 import (
-	"bytes"
 	"encoding/binary"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"hash"
@@ -13,6 +11,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/consul/acl"
+	"github.com/hashicorp/consul/lib"
 	"golang.org/x/crypto/blake2b"
 )
 
@@ -272,9 +271,7 @@ func (t *ACLToken) UnmarshalJSON(data []byte) (err error) {
 		Alias: (*Alias)(t),
 	}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	if err = decoder.Decode(&aux); err != nil {
+	if err = lib.UnmarshalJSON(data, &aux); err != nil {
 		return err
 	}
 	if aux.ExpirationTTL != nil {
@@ -582,9 +579,7 @@ func (t *ACLPolicy) UnmarshalJSON(data []byte) error {
 		Alias: (*Alias)(t),
 	}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	if err := decoder.Decode(&aux); err != nil {
+	if err := lib.UnmarshalJSON(data, &aux); err != nil {
 		return err
 	}
 	if aux.Hash != "" {
@@ -831,9 +826,7 @@ func (t *ACLRole) UnmarshalJSON(data []byte) error {
 		Alias: (*Alias)(t),
 	}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	if err := decoder.Decode(&aux); err != nil {
+	if err := lib.UnmarshalJSON(data, &aux); err != nil {
 		return err
 	}
 	if aux.Hash != "" {
