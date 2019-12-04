@@ -89,9 +89,9 @@ The table below shows this endpoint's support for
     ```
     
 - `Namespace` `(string: "")` - **Enterprise Only** Specifies the namespace to 
-  create the Binding Rule within. If not provided in the JSON body, the value of
+  create the binding rule within. If not provided in the JSON body, the value of
   the `ns` URL query parameter or the `X-Consul-Namespace` header will be used. 
-  If not provided at all, the namespace will be inferred from the request's ACL 
+  If not provided at all, the namespace will be inherited from the request's ACL 
   token, or will default to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Payload
@@ -154,10 +154,10 @@ The table below shows this endpoint's support for
 - `id` `(string: <required>)` - Specifies the UUID of the ACL binding rule
   to read. This is required and is specified as part of the URL path.
   
-- `ns` `(string: "")` - **Enterprise Only** Specified the namespace to lookup
-  the Binding Rule within. This value can be specified as the `ns` URL query 
+- `ns` `(string: "")` - **Enterprise Only** Specifies the namespace to lookup
+  the binding rule within. This value can be specified as the `ns` URL query 
   parameter, or the `X-Consul-Namespace` header. If not provided by either,
-  the namespace will be inferred from the request's ACL token, or will default
+  the namespace will be inherited from the request's ACL token, or will default
   to the `default` namespace. Added in Consul 1.7.0.
 
 
@@ -259,9 +259,9 @@ The table below shows this endpoint's support for
     ```
     
 - `Namespace` `(string: "")` - **Enterprise Only** Specifies the namespace of
-  the Binding Rule to update. If not provided in the JSON body, the value of
+  the binding rule to update. If not provided in the JSON body, the value of
   the `ns` URL query parameter or the `X-Consul-Namespace` header will be used. 
-  If not provided at all, the namespace will be inferred from the request's ACL 
+  If not provided at all, the namespace will be inherited from the request's ACL 
   token, or will default to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Payload
@@ -324,10 +324,10 @@ The table below shows this endpoint's support for
 - `id` `(string: <required>)` - Specifies the UUID of the ACL binding rule to
   delete. This is required and is specified as part of the URL path.
   
-- `ns` `(string: "")` - **Enterprise Only** Specified the namespace of the
-  Binding Rule to delete. This value can be specified as the `ns` URL query 
+- `ns` `(string: "")` - **Enterprise Only** Specifies the namespace of the
+  binding rule to delete. This value can be specified as the `ns` URL query 
   parameter, or the `X-Consul-Namespace` header. If not provided by either,
-  the namespace will be inferred from the request's ACL token, or will default
+  the namespace will be inherited from the request's ACL token, or will default
   to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Request
@@ -365,10 +365,10 @@ The table below shows this endpoint's support for
 - `authmethod` `(string: "")` - Filters the binding rule list to those binding
   rules that are linked with the specific named auth method.
   
-- `ns` `(string: "")` - **Enterprise Only** Specified the namespace to list
-  the Binding Rules for. This value can be specified as the `ns` URL query 
+- `ns` `(string: "")` - **Enterprise Only** Specifies the namespace to list
+  the binding rules for. This value can be specified as the `ns` URL query 
   parameter, or the `X-Consul-Namespace` header. If not provided by either,
-  the namespace will be inferred from the request's ACL token, or will default
+  the namespace will be inherited from the request's ACL token, or will default
   to the `default` namespace. The namespace may be specified as '*' and then
   results will be returned for all namespaces. Added in Consul 1.7.0.
 

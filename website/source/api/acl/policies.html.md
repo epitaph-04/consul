@@ -51,9 +51,9 @@ The table below shows this endpoint's support for
    those which do not yet exist but may in the future.
    
 - `Namespace` `(string: "")` - **Enterprise Only** Specifies the namespace to 
-  create the Policy within. If not provided in the JSON body, the value of
+  create the policy within. If not provided in the JSON body, the value of
   the `ns` URL query parameter or the `X-Consul-Namespace` header will be used. 
-  If not provided at all, the namespace will be inferred from the request's ACL 
+  If not provided at all, the namespace will be inherited from the request's ACL 
   token, or will default to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Payload
@@ -116,10 +116,10 @@ The table below shows this endpoint's support for
 - `id` `(string: <required>)` - Specifies the UUID of the ACL policy to
   read. This is required and is specified as part of the URL path.
   
-- `ns` `(string: "")` - **Enterprise Only** Specified the namespace to lookup
-  the Policy within. This value can be specified as the `ns` URL query 
+- `ns` `(string: "")` - **Enterprise Only** Specifies the namespace to lookup
+  the policy within. This value can be specified as the `ns` URL query 
   parameter, or the `X-Consul-Namespace` header. If not provided by either,
-  the namespace will be inferred from the request's ACL token, or will default
+  the namespace will be inherited from the request's ACL token, or will default
   to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Request
@@ -183,9 +183,9 @@ The table below shows this endpoint's support for
    those which do not yet exist but may in the future.
    
 - `Namespace` `(string: "")` - **Enterprise Only** Specifies the namespace of
-  the Policy to update. If not provided in the JSON body, the value of
+  the policy to update. If not provided in the JSON body, the value of
   the `ns` URL query parameter or the `X-Consul-Namespace` header will be used. 
-  If not provided at all, the namespace will be inferred from the request's ACL 
+  If not provided at all, the namespace will be inherited from the request's ACL 
   token, or will default to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Payload
@@ -247,10 +247,10 @@ The table below shows this endpoint's support for
 - `id` `(string: <required>)` - Specifies the UUID of the ACL policy to
   delete. This is required and is specified as part of the URL path.
   
-- `ns` `(string: "")` - **Enterprise Only** Specified the namespace of the
-  Policy to delete. This value can be specified as the `ns` URL query 
+- `ns` `(string: "")` - **Enterprise Only** Specifies the namespace of the
+  policy to delete. This value can be specified as the `ns` URL query 
   parameter, or the `X-Consul-Namespace` header. If not provided by either,
-  the namespace will be inferred from the request's ACL token, or will default
+  the namespace will be inherited from the request's ACL token, or will default
   to the `default` namespace. Added in Consul 1.7.0.
 
 ### Sample Request
@@ -285,10 +285,10 @@ The table below shows this endpoint's support for
 
 ### Parameters
 
-- `ns` `(string: "")` - **Enterprise Only** Specified the namespace to list
+- `ns` `(string: "")` - **Enterprise Only** Specifies the namespace to list
   the Policies for. This value can be specified as the `ns` URL query 
   parameter, or the `X-Consul-Namespace` header. If not provided by either,
-  the namespace will be inferred from the request's ACL token, or will default
+  the namespace will be inherited from the request's ACL token, or will default
   to the `default` namespace. The namespace may be specified as '*' and then
   results will be returned for all namespaces. Added in Consul 1.7.0.
 
