@@ -562,12 +562,10 @@ Session rules are segmented by the node name they apply to. In the example above
 access to sessions on node name with the empty prefix, allow creating sessions on the node named "app",
 and deny all access to any sessions on the "admin" node.
 
-#### Namespace Rules
-
-<%= enterprise_alert :consul %>
+#### Namespace Rules <span class="label-enterprise label-enterprise-lg">Enterprise</span>
 
 [Consul Enterprise](https://www.hashicorp.com/consul.html) 1.7.0 adds support for namespacing of many 
-Consul resources. ACL rules themselves can then be defined within a namespace and will only be applicable within that namespace.
+Consul resources. ACL rules themselves can then be defined to only to apply to apply to specific namespaces.
 
 A Namespace specific rule would look like this:
 
