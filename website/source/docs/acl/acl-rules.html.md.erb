@@ -609,8 +609,7 @@ namespace "foo" {
 }
 ```
 
-There are some restrictions to the rules that can be contained within a `namespace` or `namespace_prefix` rule that
-targets any namespace other than `default`.
+Note, when a rule is defined in any user created namespace, the following restrictions apply.
 
 1. `operator` rules are not allowed.
 2. `event` rules are not allowed.
@@ -618,8 +617,9 @@ targets any namespace other than `default`.
 4. `query` rules are not allowed.
 5. `node` rules that attempt to grant `write` privileges are not allowed.
 
-In general all of the above are permissions that only an operator should have and thus granting these permissions can
-only be targeted at the default namespace.
+These restrictions do not apply to the `default` namespace created by Consul. In general all of the 
+above are permissions that only an operator should have and thus granting these permissions can
+only be done within the default namespace.
 
 -> **Implicit namespacing:** Rules and policies created within a namespace will inherit the namespace configuration. 
 This means that rules and policies will be implicitly namespaced and do not need additional configuration. 
