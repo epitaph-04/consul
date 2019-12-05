@@ -65,7 +65,7 @@ An ACL policy is a named set of rules and is composed of the following elements:
 * **Datacenters** - A list of datacenters the policy is valid within.
 * **Namespace** - **Enterprise Only** - The namespace this policy resides within. (Added in Consul Enterprise 1.7.0)
 
--> **Consul Enterprise Namespacing** - Rules defined in a policy in any namespace other than `default` will be [restricted](/docs/acl/acl-rules.html#namespace-rules-enterprise) to being able to grant a subset of the overall permissions and only affecting that single namespace. 
+-> **Consul Enterprise Namespacing** - Rules defined in a policy in any namespace other than `default` will be [restricted](/docs/acl/acl-rules.html#namespace-rules-enterprise) to being able to grant a subset of the overall privileges and only affecting that single namespace. 
 
 #### Builtin Policies
 
@@ -73,7 +73,7 @@ An ACL policy is a named set of rules and is composed of the following elements:
 and will be assigned the reserved ID of `00000000-0000-0000-0000-000000000001`. This policy can be renamed but modification
 of anything else including the rule set and datacenter scoping will be prevented by Consul.
 
-* **Namespace Management** - **Enterprise Only** - Every Namespace created will have a policy injected with the name `namespace-management`. This policy gets injected with a randomized UUID and may be managed like any other user-defined policy
+* **Namespace Management** - **Enterprise Only** - Every namespace created will have a policy injected with the name `namespace-management`. This policy gets injected with a randomized UUID and may be managed like any other user-defined policy
 within the Namespace. (Added in Consul Enterprise 1.7.0)
 
 ### ACL Service Identities
@@ -117,7 +117,7 @@ node_prefix "" {
 The [API documentation for roles](/api/acl/roles.html#sample-payload) has some
 examples of using a service identity.
 
--> **Consul Enterprise Namespacing** - Service Identity rules will be scoped to the single Namespace that 
+-> **Consul Enterprise Namespacing** - Service Identity rules will be scoped to the single namespace that 
 the corresponding ACL Token or Role resides within.
 
 ### ACL Roles
@@ -134,7 +134,7 @@ of the following elements:
 * **Service Identity Set** - The list of service identities that are applicable for the role.
 * **Namespace** - **Enterprise Only** - The namespace this policy resides within. (Added in Consul Enterprise 1.7.0)
 
--> **Consul Enterprise Namespacing** - Roles may only link to policies defined in the same Namespace as the role itself.
+-> **Consul Enterprise Namespacing** - Roles may only link to policies defined in the same namespace as the role itself.
 
 ### ACL Tokens
 
@@ -152,7 +152,7 @@ the primary datacenter and globally replicated.
 * **Expiration Time** - The time at which this token is revoked. (Optional; Added in Consul 1.5.0)
 * **Namespace** - **Enterprise Only** - The namespace this policy resides within. (Added in Consul Enterprise 1.7.0)
 
--> **Consul Enterprise Namespacing** - Tokens may only link to policies and roles defined in the same Namespace as
+-> **Consul Enterprise Namespacing** - Tokens may only link to policies and roles defined in the same namespace as
 the token itself.
 
 #### Builtin Tokens

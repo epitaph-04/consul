@@ -564,8 +564,8 @@ and deny all access to any sessions on the "admin" node.
 
 #### Namespace Rules <span class="label-enterprise label-enterprise-lg">Enterprise</span>
 
-[Consul Enterprise](https://www.hashicorp.com/consul.html) 1.7.0 adds support for namespacing of many 
-Consul resources. ACL rules themselves can then be defined to only to apply to apply to specific namespaces.
+[Consul Enterprise](https://www.hashicorp.com/consul.html) 1.7.0 adds support for namespacing many 
+Consul resources. ACL rules themselves can then be defined to only to apply to specific namespaces.
 
 A Namespace specific rule would look like this:
 
@@ -610,7 +610,7 @@ namespace "foo" {
 ```
 
 There are some restrictions to the rules that can be contained within a `namespace` or `namespace_prefix` rule that
-targets a non-`default` namespace.
+targets any namespace other than `default`.
 
 1. `operator` rules are not allowed.
 2. `event` rules are not allowed.
@@ -621,7 +621,7 @@ targets a non-`default` namespace.
 In general all of the above are permissions that only an operator should have and thus granting these permissions can
 only be targeted at the default namespace.
 
--> **Implicit namespacing:** Rules defined in a policy which itself resides in a namespace other than `default`, will 
-be implicitly namespaced. Therefore the restrictions defined here will apply to all rules within the policy including
-those which are not enclosed in a `namespace` rule. Additionally, these policies will be prevented from defining rules
-that would target any other namespace explicitly.
+-> **Implicit namespacing:** Rules and policies created within a namespace will inherit the namespace configuration. 
+This means that rules and policies will be implicitly namespaced and do not need additional configuration. 
+The restrictions outlined above will apply to these rules and policies. Additionally, rules and policies within a 
+specific namespace are prevented from accessing resources in another namespace.

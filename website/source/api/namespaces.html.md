@@ -39,7 +39,7 @@ The table below shows this endpoint's support for
 
 - `Description` `(string: "")` - Free form namespaces description.
 
-- `ACLs` `(object: <optional>)` - ACL configurations for this Namespace. Rules from
+- `ACLs` `(object: <optional>)` - ACL configurations for this namespace. Rules from
   default policies and roles will be used only when there are no rules from directly linked
   policies, roles and service identities that are for the target resource and segment.
   Therefore if a directly linked policy grants read access to some resource and a 
