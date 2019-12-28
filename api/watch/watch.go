@@ -18,6 +18,7 @@ const DefaultTimeout = 10 * time.Second
 // This view is watched for changes and a handler is invoked to take any
 // appropriate actions.
 type Plan struct {
+	UUID        string
 	Datacenter  string
 	Token       string
 	Type        string
